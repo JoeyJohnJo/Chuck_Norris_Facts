@@ -1,12 +1,15 @@
 import { useState } from 'react'
-import logo from '../../assets/images/logo.svg'
+import logo from '../../assets/images/logo.png'
 import './App.css'
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <div className="App">
+      <Header/>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>Hello Vite + React!</p>
@@ -38,6 +41,7 @@ function App() {
           </a>
         </p>
       </header>
+      <Footer/>
     </div>
   )
 }
