@@ -1,4 +1,5 @@
 import React from "react";
+import FooterSectionTitle from "./FooterSectionTitle";
 
 type FooterSectionProps = {
     title?: string,
@@ -10,7 +11,7 @@ type FooterSectionProps = {
 
 const FooterSection: React.FC<FooterSectionProps> = props => (
     <div className="text:center sm:text-start">
-        <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">{props.title}</h2>
+        { props.title ? <FooterSectionTitle title={props.title}/> : null }
 
         {
             props.children.subtitle ?
@@ -21,7 +22,7 @@ const FooterSection: React.FC<FooterSectionProps> = props => (
 
         <br/>
 
-        {props.children.content}
+        { props.children.content }
     </div>
 )
 
