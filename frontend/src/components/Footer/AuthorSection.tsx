@@ -12,7 +12,8 @@ const AuthorSection = () => <FooterSection title="Author">
         </>,
         content: <Column>
             <ExternalLink href="https://github.com/joeyjohnjo" icon={true}> Github</ExternalLink>
-            <ExternalLink href="https://www.linkedin.com/in/gustavo-rocha-da-silva-25b16a1a6/" icon={true}> Linkedin</ExternalLink>
+            <ExternalLink href="https://www.linkedin.com/in/gustavo-rocha-da-silva-25b16a1a6/"
+                          icon={true}> Linkedin</ExternalLink>
         </Column>
     }}
 </FooterSection>

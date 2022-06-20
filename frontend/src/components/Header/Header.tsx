@@ -6,7 +6,9 @@ function Header() {
             <a href="#" className="px-8 hidden sm:inline">
                 <img src={logo} alt="Chuck Norris Logo"/>
             </a>
-            <a href="#" className="px-5 sm:px-0 text-xl md:text-4xl leading-8 font-extrabold tracking-tight text-gray-900"> CHUCK NORRIS FACTS </a>
+            <a href="#"
+               className="px-5 sm:px-0 text-xl md:text-4xl leading-8 font-extrabold tracking-tight text-gray-900"> CHUCK
+                NORRIS FACTS </a>
         </div>
     )
 }

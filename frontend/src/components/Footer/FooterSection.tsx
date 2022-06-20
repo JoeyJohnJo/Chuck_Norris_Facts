@@ -11,7 +11,7 @@ type FooterSectionProps = {
 
 const FooterSection: React.FC<FooterSectionProps> = props => (
     <div className="text:center sm:text-start">
-        { props.title ? <FooterSectionTitle title={props.title}/> : null }
+        {props.title ? <FooterSectionTitle title={props.title}/> : null}
 
         {
             props.children.subtitle ?
@@ -22,7 +22,7 @@ const FooterSection: React.FC<FooterSectionProps> = props => (
 
         <br/>
 
-        { props.children.content }
+        {props.children.content}
     </div>
 )
 
