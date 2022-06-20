@@ -1,6 +1,9 @@
+import "reflect-metadata"
 import {buildSchema} from "type-graphql";
 import path = require("path");
 import {ApolloServer} from "apollo-server";
+const config = require('config');
+
 
 async function main() {
     const schema = await buildSchema({
@@ -13,4 +16,4 @@ async function main() {
     console.log(`Server is running, GraphQL Playground available at ${url}`)
 }
 
-main()
+main().then(() => console.log(config.get('name')))
