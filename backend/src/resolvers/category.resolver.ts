@@ -1,14 +1,17 @@
 import {Query, Resolver} from "type-graphql";
+
 const axios = require('axios');
 const config = require('config');
+
+
 
 @Resolver()
 export class CategoryResolver {
 
-  url = config.get('api');
+  categories = `${config.get('api')}/jokes/categories`
 
-  @Query((_) => String)
+  @Query((_) => [String])
   async getCategories() {
-    return "testing"
+    return (await axios.get(this.categories)).data
   }
 }
