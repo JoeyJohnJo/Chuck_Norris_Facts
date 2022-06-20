@@ -5,8 +5,8 @@ import FooterSection from "./FooterSection";
 const CreditsSection = () => <FooterSection title="Credits">
     {{
         subtitle: <>
-            This page is based on&nbsp;
-            <ExternalLink href="https://api.chucknorris.io"> chucknorris.io </ExternalLink>.
+            This page is based on
+            <ExternalLink href="https://api.chucknorris.io"> chucknorris.io</ExternalLink>.
         </>,
         content: <Column>
             <ExternalLink href="https://github.com/chucknorris-io" icon={true}> Github </ExternalLink>
