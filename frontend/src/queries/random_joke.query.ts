@@ -1,10 +1,10 @@
 import {gql} from "@apollo/client";
 
-const randomJoke = gql(`query  {
+const random_joke = gql(`query  {
   randomJoke {
-    updated_at
+    created_at
     value
   }
 }`)
 
-export default randomJoke
+export default random_joke
