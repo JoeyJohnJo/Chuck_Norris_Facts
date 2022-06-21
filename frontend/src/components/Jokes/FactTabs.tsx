@@ -9,9 +9,8 @@ import React from "react";
 import CategoryContent from "./CategoryContent";
 
 const FactTabs: React.FC<{ tabs: string[] }> = props =>
-    <Tabs value={props.tabs[0]}
-    className="w-full p-6 border border-blue-grey-50 rounded-lg scroll-mt-48 overflow-x-scroll lg:overflow-visible">
-    <TabsHeader className="flex relative bg-blue-grey-50 bg-opacity-60 rounded-lg p-1" indicatorProps={{style: {display: "none"},}}>
+    <Tabs value={props.tabs[0]} className="w-full p-6 border border-blue-grey-50 rounded-lg">
+    <TabsHeader className="flex relative bg-blue-grey-50 bg-opacity-60 rounded-lg p-1 scroll-mt-48 overflow-x-scroll lg:overflow-visible" indicatorProps={{style: {display: "none"},}}>
         {
             props.tabs.map((value, index) => (
                 <Tab key={index} value={value}
