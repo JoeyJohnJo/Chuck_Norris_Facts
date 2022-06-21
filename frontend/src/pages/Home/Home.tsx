@@ -2,24 +2,26 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import {useLazyQuery, useQuery} from "@apollo/client";
 import categories from "../../queries/categories.query";
 import random_joke from "../../queries/random_joke.query";
+import search_joke from "../../queries/search.query";
 import Card from "../../components/Jokes/Card";
 import Joke from "../../models/Joke";
 import Spinner from "../../components/Spinner/Spinner";
 import FactTabs from "../../components/Jokes/FactTabs";
-import joke_by_category from "../../queries/joke_by_category.query";
+import {useNavigate} from "react-router-dom";
 
 function Home() {
-
+    const navigate = useNavigate()
     const factCategories = useQuery<{ categories: string[] }>(categories)
     const randomJoke = useQuery<{ randomJoke: Joke }>(random_joke)
-    const [searchJoke, searchResults] = useLazyQuery<{ search: Joke[] }>(joke_by_category, {
+    const [searchJoke] = useLazyQuery<{ search: Joke[] }>(search_joke, {
         fetchPolicy: 'network-only', // Used for first execution
         nextFetchPolicy: 'cache-first', // Used for subsequent executions
     });
 
     const onUserSearch = (searchTerm: string) => {
-        searchJoke({ variables: { q: searchTerm } }).then(_ => {
-            const results = searchResults.data?.search
+        searchJoke({ variables: { q: searchTerm } }).then(res => {
+            const results = res.data?.search
+            navigate('/search', { state: { results } })
         })
      }
 
