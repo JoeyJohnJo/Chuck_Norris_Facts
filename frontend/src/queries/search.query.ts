@@ -4,6 +4,7 @@ const search_joke = gql(`query Search($q: String!) {
   search(q: $q) {
     value
     created_at
+    categories
   }
 }`)
 
