@@ -8,11 +8,13 @@ import Joke from "../../models/Joke";
 import Spinner from "../../components/Spinner/Spinner";
 import FactTabs from "../../components/Jokes/FactTabs";
 import {useNavigate} from "react-router-dom";
+import home_page_query from "../../queries/home_page.query";
+import HomePageQueryResponse from "../../models/HomePageQueryResponse";
 
 function Home() {
     const navigate = useNavigate()
-    const factCategories = useQuery<{ categories: string[] }>(categories)
-    const randomJoke = useQuery<{ randomJoke: Joke }>(random_joke)
+    const initialData = useQuery<HomePageQueryResponse>(home_page_query, { variables: { category: 'animal' } });
+
     const [searchJoke] = useLazyQuery<{ search: Joke[] }>(search_joke, {
         fetchPolicy: 'network-only', // Used for first execution
         nextFetchPolicy: 'cache-first', // Used for subsequent executions
@@ -31,19 +33,19 @@ function Home() {
                 <SearchBar className="w-full sm:w-3/5" onClick={onUserSearch}/>
             </div>
             {
-                randomJoke.loading ? null :
+                initialData.loading ? null :
                     <div className="py-5">
                         <Card title="Did you know..."
-                              content={randomJoke.data?.randomJoke?.value!!}
-                              footer={randomJoke.data?.randomJoke?.created_at!!}
+                              content={initialData.data?.randomJoke?.value!!}
+                              footer={initialData.data?.randomJoke?.created_at!!}
                         />
                     </div>
             }
             {
-                factCategories.loading || randomJoke.loading ?
+                initialData.loading ?
                     <div className="flex justify-center items-center grow"><Spinner/></div>
                     :
-                    <FactTabs tabs={factCategories.data?.categories!!}/>
+                    <FactTabs tabs={initialData.data?.categories!!}/>
             }
         </>
     )
